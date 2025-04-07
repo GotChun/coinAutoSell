@@ -1,0 +1,13 @@
+# 🛡️ API 키 파일
+config.py
+
+# 🧹 Python 캐시
+__pycache__/
+*.py[cod]
+*.log
+
+# 📊 거래 내역 등 로컬 로그
+trades.csv
+*.csv
+
+.venv/
