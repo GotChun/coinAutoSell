@@ -67,4 +67,8 @@ def place_market_sell(ticker):
     print("❌ 매도 실패: 보유 수량 없음")
     return None
 
-
+def get_krw_balance():
+    """현재 KRW 잔액 조회 함수"""
+    balances = upbit.get_balances()
+    krw = next((float(b['balance']) for b in balances if b['currency'] == 'KRW'),0)
+    return krw
