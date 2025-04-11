@@ -13,29 +13,23 @@ def get_balances():
         print(f"{b['currency']}:{b['balance']}개 (평단가: {b.get('avg_buy_price','없음')})")
     return balances
 
-def place_market_buy(ticker):
+def place_market_buy(ticker,amount):
     """보유한 KRW 전액으로 시장가 매수 (수수료 고려 99.5%)"""
-    balances = upbit.get_balances()
-    krw = next((float(b['balance']) for b in balances if b['currency'] == 'KRW'),0)
+    print(f"[매수] {ticker} 코인을 {int(amount)}원 어치 시장가 매수합니다.")
 
-    if krw < 5000:
-        print(f"❌ 잔액 부족: {krw}원")
-        return None
-    
-    buy_amount = krw * 0.995 #수수료 여유
-    print(f"[매수] {ticker} 시장가 매수: 약 {int(buy_amount)}원")
-    return upbit.buy_market_order(ticker, buy_amount)
+    # 실제 거래 막고 테스트만 할 경우:
+    result = {"price": None, "volume": None, "test": True}
 
-    print(f"[매수] {ticker} 코인을 {buy_amount}원 어치 시장가 매수합니다.")
-    result = upbit.buy_market_order(ticker,buy_amount)
-    print("매수 완료",result)
+    # 실제 거래용
+    # result = upbit.buy_market_order(ticker,amount)
+    # print("매수 완료",result)
     
     log_trade(
         ticker=ticker,
         trade_type="매수",
         price=result.get("price"),
         volume=result.get("volume"),
-        krw=buy_amount
+        krw=amount
     )
     
     return result
@@ -51,8 +45,8 @@ def place_market_sell(ticker):
             if volume > 0:
                 sell_volume = volume * 0.995  # 수수료 여유
                 print(f"[매도] {ticker} 시장가 매도: 수량 {sell_volume:.8f}")
-                result = upbit.sell_market_order(ticker, sell_volume)
-
+                # result = upbit.sell_market_order(ticker, sell_volume)
+                return {"test": True}
                 # 로그 기록
                 log_trade(
                     ticker=ticker,
