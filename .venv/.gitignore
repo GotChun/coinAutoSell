@@ -11,3 +11,8 @@ trades.csv
 *.csv
 
 .venv/
+
+# 실행파일
+dist/
+build/
+*.spec

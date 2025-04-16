@@ -1,4 +1,0 @@
-# 설정 파일
-
-ACCESS_KEY = "QfXX9776YETCLGfbxsMrVzf8jvfBLOPdFV1fiDAx"
-SECRET_KEY = "5RWqRxxv3MjY7sbMP6wkqza2DmrjOSpcOyB7sRlL"

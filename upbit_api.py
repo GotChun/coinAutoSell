@@ -18,11 +18,11 @@ def place_market_buy(ticker,amount):
     print(f"[매수] {ticker} 코인을 {int(amount)}원 어치 시장가 매수합니다.")
 
     # 실제 거래 막고 테스트만 할 경우:
-    result = {"price": None, "volume": None, "test": True}
+    # result = {"price": None, "volume": None, "test": True}
 
     # 실제 거래용
-    # result = upbit.buy_market_order(ticker,amount)
-    # print("매수 완료",result)
+    result = upbit.buy_market_order(ticker,amount)
+    print("매수 완료",result)
     
     log_trade(
         ticker=ticker,
@@ -45,8 +45,8 @@ def place_market_sell(ticker):
             if volume > 0:
                 sell_volume = volume * 0.995  # 수수료 여유
                 print(f"[매도] {ticker} 시장가 매도: 수량 {sell_volume:.8f}")
-                # result = upbit.sell_market_order(ticker, sell_volume)
-                return {"test": True}
+                result = upbit.sell_market_order(ticker, sell_volume)
+                # return {"test": True}
                 # 로그 기록
                 log_trade(
                     ticker=ticker,

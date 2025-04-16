@@ -3,7 +3,7 @@ import ta.trend
 import pandas as pd
 
 # 설정 값
-TICKER = "KRW-RENDER"
+TICKER = "KRW-STRAX"
 COUNT = 720     #1시간 봉 30일치
 INITIAL_CASH = 1_000_000
 
